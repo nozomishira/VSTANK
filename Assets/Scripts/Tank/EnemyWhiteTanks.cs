@@ -6,7 +6,7 @@ public class EnemyWhiteTanks : MonoBehaviour
 {
     Rigidbody rigidbody;
     RaycastHit hit;
-    float speed = 8.0f;
+    float speed = 4.0f;
     private Vector3 EnemyStraightPosition;
 
     void Start()
@@ -25,7 +25,7 @@ public class EnemyWhiteTanks : MonoBehaviour
     {
         var scale = transform.lossyScale.x * 1.0f;
         //var isHit = Physics.BoxCast(transform.position, Vector3.one * scale, transform.forward, out hit, transform.rotation);
-        var isHit = Physics.Raycast(this.transform.position, transform.forward*2, out hit, 1.0f);
+        var isHit = Physics.Raycast(this.transform.position, transform.forward*4, out hit, 1.0f);
 
         if (!isHit)
         {
