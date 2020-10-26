@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TankMovement : MonoBehaviour
 {
@@ -121,5 +122,25 @@ public class TankMovement : MonoBehaviour
 
         // Apply this rotation to the rigidbody's rotation.
         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
+    }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "EnemyShell")
+        {
+            Debug.Log("destroy");
+            SceneManager.LoadScene("LoseResultScene");
+            //Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "EnemyShell")
+        {
+            Debug.Log("destroy");
+            SceneManager.LoadScene("LoseResultScene");
+           // Destroy(this.gameObject);
+        }
     }
 }

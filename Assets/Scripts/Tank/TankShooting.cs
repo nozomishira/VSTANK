@@ -53,6 +53,7 @@ public class TankShooting : MonoBehaviour
         else if (Input.GetButtonDown("space"))
         {
             // ... reset the fired flag and reset the launch force.
+            
             m_Fired = false;
             m_CurrentLaunchForce = m_MinLaunchForce;
 
@@ -72,6 +73,7 @@ public class TankShooting : MonoBehaviour
         else if (Input.GetButtonUp("space") && !m_Fired)
         {
             // ... launch the shell.
+           // Debug.Log("shoot");
             Fire();
         }
     }
@@ -86,6 +88,7 @@ public class TankShooting : MonoBehaviour
         // Create an instance of the shell and store a reference to it's rigidbody.
         Rigidbody shellInstance =
             Instantiate(m_Shell, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
+        Debug.Log("launch");
 
         // Set the shell's velocity to the launch force in the fire position's forward direction.
         shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward*2;
@@ -97,4 +100,6 @@ public class TankShooting : MonoBehaviour
         // Reset the launch force.  This is a precaution in case of missing button events.
         m_CurrentLaunchForce = m_MinLaunchForce;
     }
+
+   
 }

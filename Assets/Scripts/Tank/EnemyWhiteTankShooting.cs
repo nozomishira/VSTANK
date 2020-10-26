@@ -19,7 +19,7 @@ public class EnemyWhiteTankShooting : MonoBehaviour
     void Update()
     {
         timercount += Time.deltaTime;
-        if(timercount > 4.0f)
+        if(timercount > 0.2f)
         {
             fire();
         }
@@ -29,7 +29,7 @@ public class EnemyWhiteTankShooting : MonoBehaviour
     {
        
         Rigidbody shellInstance = Instantiate(enemy_Shell, enemy_FireTransform.position, enemy_FireTransform.rotation) as Rigidbody;
-        shellInstance.velocity = mLaunchForce * enemy_FireTransform.forward * 2;
+        shellInstance.velocity = mLaunchForce * enemy_FireTransform.forward * -2;
         timercount = 0;
     }
 }
