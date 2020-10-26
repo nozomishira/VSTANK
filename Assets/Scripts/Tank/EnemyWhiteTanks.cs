@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStraightTank : MonoBehaviour
+public class EnemyWhiteTanks : MonoBehaviour
 {
     Rigidbody rigidbody;
     RaycastHit hit;
@@ -46,7 +46,7 @@ public class EnemyStraightTank : MonoBehaviour
 
         var currentRotation = this.gameObject.transform.localRotation; // localEulerAnglesの代わりにlocalRotationを取得
                                                                        //var newRotation = currentRotation * Quaternion.AngleAxis(90, Vector3.right); // currentRotationを(1, 0, 0)軸周り90°回転したものをnewRotationとする
-        var newRotation = currentRotation * Quaternion.AngleAxis(Random.Range(150.0f, 270.0f), Vector3.up);
+        var newRotation = currentRotation * Quaternion.AngleAxis(Random.Range(150.0f, 330.0f), Vector3.up);
         //var newRotation = currentRotation * Quaternion.AngleAxis(180, Vector3.up);
 
 
@@ -66,5 +66,25 @@ public class EnemyStraightTank : MonoBehaviour
         //ちょうど90度刻みになるように調整
         this.gameObject.transform.localRotation = newRotation;
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "PlayerShell")
+        {
+            //Debug.Log("destroy");
+            EnemyDestroyCount.DestroyedEnemyCount++;
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "PlayerShell")
+        {
+            //Debug.Log("destroy");
+            EnemyDestroyCount.DestroyedEnemyCount++;
+            Destroy(this.gameObject);
+        }
     }
 }

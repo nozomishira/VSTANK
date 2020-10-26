@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTank : MonoBehaviour
+public class EnemyGoldScript : MonoBehaviour
 {
-   public float enemySpeed = 1.0f;
+    public float enemySpeed = 4.0f;
     public GameObject targetObj;
     MeshRenderer targetMesh;
     MeshRenderer thisObjMesh;
@@ -47,8 +47,26 @@ public class EnemyTank : MonoBehaviour
             this.transform.LookAt(targetObj.transform);
             this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, targetObj.transform.position, speed);
         }
-        
+
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "PlayerShell")
+        {
+            EnemyDestroyCount.DestroyedEnemyCount++;
+            //Debug.Log("destroy");
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "PlayerShell")
+        {
+            //Debug.Log("destroy");
+            EnemyDestroyCount.DestroyedEnemyCount++;
+            Destroy(this.gameObject);
+        }
+    }
 }
