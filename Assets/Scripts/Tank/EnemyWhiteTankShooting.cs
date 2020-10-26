@@ -19,7 +19,7 @@ public class EnemyWhiteTankShooting : MonoBehaviour
     void Update()
     {
         timercount += Time.deltaTime;
-        if(timercount > 0.2f)
+        if(timercount > 4.0f)
         {
             fire();
         }
