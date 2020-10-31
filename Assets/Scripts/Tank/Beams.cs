@@ -76,7 +76,8 @@ public class Beams : MonoBehaviour
                 case "Player":
                     obj.collider.GetComponent<MeshRenderer>().material.color = Color.red;
                     Debug.Log("hit");//当たり判定を行う
-                    SceneManager.LoadScene("LoseResultScene");
+                    EnemyDestroyCount.RemainTankCount--;
+                    //SceneManager.LoadScene("LoseResultScene");
                     //Destroy(obj.collider.gameObject);
                     break;
                 case "Thing":

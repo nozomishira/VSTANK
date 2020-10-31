@@ -128,9 +128,15 @@ public class TankMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyShell")
         {
-            Debug.Log("destroy");
-            SceneManager.LoadScene("LoseResultScene");
+            //Debug.Log("destroy");
+            EnemyDestroyCount.RemainTankCount--;
+            //SceneManager.LoadScene("LoseResultScene");
             //Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Recovery")
+        {
+            EnemyDestroyCount.RemainTankCount++;
+            Destroy(collision.gameObject);
         }
     }
 
@@ -138,9 +144,15 @@ public class TankMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "EnemyShell")
         {
-            Debug.Log("destroy");
-            SceneManager.LoadScene("LoseResultScene");
-           // Destroy(this.gameObject);
+            //Debug.Log("destroy");
+            //SceneManager.LoadScene("LoseResultScene");
+            EnemyDestroyCount.RemainTankCount--;
+            // Destroy(this.gameObject);
+        }
+        if (other.gameObject.tag == "Recovery")
+        {
+            EnemyDestroyCount.RemainTankCount++;
+            Destroy(other.gameObject);
         }
     }
 }

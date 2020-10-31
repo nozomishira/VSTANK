@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EnemyDestroyCount : MonoBehaviour
 {
     static public int DestroyedEnemyCount = 0;
+    static public int RemainTankCount = 3;
+    public Text RemainText;
+    public Text LevelText;
     public GameObject EnemyWhite;
     public GameObject EnemyRed;
     public GameObject EnemyBlack;
@@ -18,8 +22,10 @@ public class EnemyDestroyCount : MonoBehaviour
         int level = PlayerPrefs.GetInt("LEVEL");
         Level = level;
         DestroyedEnemyCount = 0;
+        RemainTankCount = 3;
         //Instantiate(Tank, new Vector3(-10.3f, 0.0f, -11.12f), Quaternion.identity);
 
+        LevelText.text = "Level."+level.ToString();
         if (level==1)
         {
             Instantiate(EnemyWhite, new Vector3(-10.6f, 0.0f, 10.1f), Quaternion.identity);
@@ -86,6 +92,7 @@ public class EnemyDestroyCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RemainText.text = RemainTankCount.ToString();
         if ((Level == 10)||(Level==9))
         {
             if (DestroyedEnemyCount > 4)
@@ -109,5 +116,15 @@ public class EnemyDestroyCount : MonoBehaviour
                 SceneManager.LoadScene("WinResultScene");
             }
         }
+
+        if (RemainTankCount <= 0)
+        {
+            SceneManager.LoadScene("LoseResultScene");
+        }
+    }
+
+    public void OnClickLevelScene()
+    {
+        SceneManager.LoadScene("LevelChooseScene");
     }
 }
