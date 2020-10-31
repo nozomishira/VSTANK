@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class LevelChoose : MonoBehaviour
 {
     int levelSetting;
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        EnemyDestroyCount.DestroyedEnemyCount=0;
     }
 
     // Update is called once per frame

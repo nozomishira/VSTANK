@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyGoldScript : MonoBehaviour
 {
-    public float enemySpeed = 4.0f;
-    public GameObject targetObj;
+    public float enemySpeed = 7.0f;
+    GameObject targetObj;
     MeshRenderer targetMesh;
     MeshRenderer thisObjMesh;
 
@@ -19,8 +19,10 @@ public class EnemyGoldScript : MonoBehaviour
 
     void Start()
     {
+        targetObj = GameObject.Find("Tank");
         targetMesh = targetObj.GetComponent<MeshRenderer>();
         thisObjMesh = this.gameObject.GetComponent<MeshRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class EnemyGoldScript : MonoBehaviour
 
     }
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "PlayerShell")
@@ -58,8 +61,8 @@ public class EnemyGoldScript : MonoBehaviour
             //Debug.Log("destroy");
             Destroy(this.gameObject);
         }
-    }
-
+    }*/
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "PlayerShell")
