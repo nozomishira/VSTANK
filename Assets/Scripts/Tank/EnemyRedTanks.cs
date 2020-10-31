@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyRedTanks : MonoBehaviour
 {
    public float enemySpeed = 1.0f;
-    public GameObject targetObj;
+     GameObject targetObj;
     MeshRenderer targetMesh;
     MeshRenderer thisObjMesh;
 
@@ -19,8 +19,10 @@ public class EnemyRedTanks : MonoBehaviour
 
     void Start()
     {
+        targetObj = GameObject.Find("Tank");
         targetMesh = targetObj.GetComponent<MeshRenderer>();
         thisObjMesh = this.gameObject.GetComponent<MeshRenderer>();
+        
     }
 
     // Update is called once per frame
