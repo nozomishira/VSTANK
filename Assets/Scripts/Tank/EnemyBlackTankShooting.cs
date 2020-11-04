@@ -18,16 +18,17 @@ public class EnemyBlackTankShooting : MonoBehaviour
 
     void Start()
     {
-       
-  
-      
+
+        Rigidbody shellInstance = Instantiate(enemy_Shell, enemy_FireTransform.position, enemy_FireTransform.rotation) as Rigidbody;
+        shellInstance.velocity = mLaunchForce * enemy_FireTransform.forward * 2;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         timercount += Time.deltaTime;
-        if (timercount > 4.0f)
+        if (timercount > 10.0f)
         {
             fire();
         }
