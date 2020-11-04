@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBlackTank : MonoBehaviour
 {
-   public float enemySpeed = 5.0f;
+   public float enemySpeed = 4.0f;
      GameObject targetObj;
     MeshRenderer targetMesh;
     MeshRenderer thisObjMesh;
@@ -15,7 +15,7 @@ public class EnemyBlackTank : MonoBehaviour
     float y_Abs;
     float z_Abs;
 
-    [SerializeField] float speedParameter = 5.0f;
+    [SerializeField] float speedParameter = 4.0f;
 
     void Start()
     {
