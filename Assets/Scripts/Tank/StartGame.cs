@@ -19,6 +19,6 @@ public class StartGame : MonoBehaviour
 
     public void onClickStart()
     {
-        SceneManager.LoadScene("ExplainScene");
+        SceneManager.LoadScene("LevelChooseScene");
     }
 }
